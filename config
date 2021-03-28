@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+# font pango:monospace 8
+font pango:Deja Vu Momo 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -156,11 +157,14 @@ bar {
 }
 
 # Navin's autostart settings
-exec_always feh --bg-fill $HOME/Pictures/Backgrounds/andreas-gucklhorn-285567-unsplash.jpg
+exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
 
 ##########################
 # Navin's custom settings
 ##########################
+
+# borderless widows
+new_window normal 0
 
 # Backlight
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2
@@ -197,3 +201,8 @@ set $volumestep 5
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+
+# Compositing (compton)
+# seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
+#exec --no-startup-id "compton -b"
+exec --no-startup-id compton --opacity-rule '70:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
