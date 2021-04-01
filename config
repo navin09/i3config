@@ -153,7 +153,17 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	status_command i3status
+	separator_symbol "⁞"
+	font pango:Deja Vu Momo 8
+	colors {
+		background #1F2D3A
+		statusline #1ABC9C
+		separator #1ABC9C
+		# colorclass       <border> <background> <text>
+		focused_workspace  #1ABC9C  #1ABC9C     #1F2D3A
+		inactive_workspace #1F2D3A  #1F2D3A     #1ABC9C
+	}
 }
 
 # Navin's autostart settings
@@ -165,6 +175,9 @@ exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
 
 # borderless widows
 new_window normal 0
+
+# Custom title format
+for_window [class=".*"] title_format "  <span size='smaller'>%title</span>"
 
 # Backlight
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2
@@ -202,7 +215,11 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $stat
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
 
+# Switching monitors
+bindsym Super_L exec --no-startup-id ~/.screenlayout/external-only.sh
+bindsym Shift+Super_L exec --no-startup-id ~/.screenlayout/both.sh
+
 # Compositing (compton)
 # seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
 #exec --no-startup-id "compton -b"
-exec --no-startup-id compton --opacity-rule '70:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
+exec --no-startup-id compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
