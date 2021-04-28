@@ -173,8 +173,9 @@ exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
 # Navin's custom settings
 ##########################
 
-# borderless widows
-new_window normal 0
+# widow border size in pixels (0 turns off)
+new_window normal 1
+
 
 # Custom title format
 for_window [class=".*"] title_format "  <span size='smaller'>%title</span>"
@@ -215,9 +216,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $stat
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
 
-# Switching monitors
-bindsym Super_L exec --no-startup-id ~/.screenlayout/external-only.sh
-bindsym Shift+Super_L exec --no-startup-id ~/.screenlayout/both.sh
+# Show a battery warning on low battery
+exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scripts/i3-battery-popup.wav 
 
 # Compositing (compton)
 # seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
