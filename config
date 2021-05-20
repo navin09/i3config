@@ -172,6 +172,9 @@ exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
 ##########################
 # Navin's custom settings
 ##########################
+# Lock screen shortcut
+bindsym Mod1+Control+l exec i3lock -c 000000 -i ~/Pictures/lockscreen.png
+
 
 # widow border size in pixels (0 turns off)
 new_window normal 1
