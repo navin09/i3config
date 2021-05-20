@@ -176,6 +176,9 @@ exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
 # widow border size in pixels (0 turns off)
 new_window normal 1
 
+# default workspace layout
+workspace_layout tabbed
+
 
 # Custom title format
 for_window [class=".*"] title_format "  <span size='smaller'>%title</span>"
