@@ -152,10 +152,23 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+#	status_command i3status
+#	separator_symbol "⁞"
+#	font pango:Deja Vu Momo 8
+#	colors {
+#		background #1F2D3A
+#		statusline #1ABC9C
+#		separator #1ABC9C
+#		# colorclass       <border> <background> <text>
+#		focused_workspace  #1ABC9C  #1ABC9C     #1F2D3A
+#		inactive_workspace #1F2D3A  #1F2D3A     #1ABC9C
+#	}
+#}
 bar {
-	status_command i3status
+	status_command exec ~/.local/bin/barista
 	separator_symbol "⁞"
-	font pango:Deja Vu Momo 8
+	font pango:DejaVu Sans Mono 10
 	colors {
 		background #1F2D3A
 		statusline #1ABC9C
@@ -175,13 +188,11 @@ exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
 # Lock screen shortcut
 bindsym Mod1+Control+l exec i3lock -c 000000 -i ~/Pictures/lockscreen.png
 
-
 # widow border size in pixels (0 turns off)
 new_window normal 1
 
 # default workspace layout
 workspace_layout tabbed
-
 
 # Custom title format
 for_window [class=".*"] title_format "  <span size='smaller'>%title</span>"
@@ -227,5 +238,5 @@ exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scr
 
 # Compositing (compton)
 # seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
-#exec --no-startup-id "compton -b"
+# exec --no-startup-id "compton -b"
 exec --no-startup-id compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
