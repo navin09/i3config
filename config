@@ -183,6 +183,7 @@ bar {
 
 # Navin's autostart settings
 exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg
+exec --no-startup-id /usr/bin/syncthing serve --no-browser --logfile=default
 
 ##########################
 # Navin's custom settings
