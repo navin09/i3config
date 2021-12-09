@@ -242,4 +242,5 @@ exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scr
 # Compositing (compton)
 # seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
 # exec --no-startup-id "compton -b"
-exec --no-startup-id compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
+# exec --no-startup-id compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
+exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
