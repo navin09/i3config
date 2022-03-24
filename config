@@ -259,6 +259,9 @@ bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $stat
 # Show a battery warning on low battery
 exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scripts/i3-battery-popup.wav 
 
+# Run the Policykit Agent
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
 # Compositing (compton)
 # seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
 # exec --no-startup-id "compton -b"
