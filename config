@@ -263,7 +263,7 @@ exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scr
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # Run prank 'Activate Linux'
-exec --no-startup-id activate-linux &
+# exec --no-startup-id activate-linux &
 
 # Compositing (compton)
 # seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
