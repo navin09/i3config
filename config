@@ -189,7 +189,8 @@ exec --no-startup-id /usr/bin/syncthing serve --no-browser --logfile=default
 # Navin's custom settings
 ##########################
 # Lock screen shortcut
-bindsym Mod1+Control+l exec i3lock -c 000000 -i ~/Pictures/lockscreen.png
+#bindsym Mod1+Control+l exec i3lock -c 000000 -i ~/Pictures/lockscreen.png
+bindsym Mod1+Control+l exec i3lock-fancy -g -- scrot -z
 
 # move floating windows with keys
 bindsym $mod+m mode "move" focus floating
