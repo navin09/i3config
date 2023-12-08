@@ -175,8 +175,10 @@ exec --no-startup-id /usr/bin/syncthing serve --no-browser --logfile=default
 # Navin's custom settings
 ##########################
 # Lock screen shortcut
-#bindsym Mod1+Control+l exec i3lock -c 000000 -i ~/Pictures/lockscreen.png
+# bindsym Mod1+Control+l exec i3lock -c 000000 -i ~/Pictures/lockscreen.png
 bindsym Mod1+Control+l exec i3lock-fancy -g -- scrot -z
+# bindsym $mod+Print exec gnome-screenshot -f ~/Pictures/screenshot-$(date +"%d-%m-%Y")
+bindsym --release Print exec scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # move floating windows with keys
 bindsym $mod+m mode "move" focus floating
@@ -254,6 +256,9 @@ client.urgent           $red       $red        $white       $red          $red
 # Custom title format
 for_window [class=".*"] title_format "  %title"
 
+# Custom floating windows
+for_window [class="Gnome-calculator" instance="gnome-calculator"] floating enable
+
 # Backlight
 bindsym XF86MonBrightnessUp exec xbacklight -inc 2
 bindsym XF86MonBrightnessDown exec xbacklight -dec 2
@@ -289,6 +294,13 @@ set $volumestep 5
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+
 
 # Show a battery warning on low battery
 exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scripts/i3-battery-popup.wav 
@@ -299,8 +311,5 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 # Run prank 'Activate Linux'
 # exec --no-startup-id activate-linux &
 
-# Compositing (compton)
-# seq 0 3 | xargs -l1 -I@ compton -b -d :0.@  # Multihead support
-# exec --no-startup-id "compton -b"
-# exec --no-startup-id compton --opacity-rule '80:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
+# Compositing (picom)
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
