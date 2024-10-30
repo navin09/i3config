@@ -301,10 +301,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
-# Bind 'Mail' and 'Homepage' to brightness controls
-bindsym XF86Mail exec sudo brightnessctl -d "intel_backlight" set 10%-
-bindsym XF86HomePage exec sudo brightnessctl -d "intel_backlight" set 10%+
-
+# Bind 'Mail' and 'Homepage' to brightness controls (Huo Ji Z-88 keyboard)
+#bindsym XF86Mail exec sudo brightnessctl -d "intel_backlight" set 10%-
+#bindsym XF86HomePage exec sudo brightnessctl -d "intel_backlight" set 10%+
+# Bind 'Search' and 'Calculator' to brightness controls (Redragon Kumara K552 keyboard)
+bindsym XF86Search exec sudo brightnessctl -d "intel_backlight" set 10%-
+bindsym XF86Calculator exec  sudo brightnessctl -d "intel_backlight" set 10%+
 
 # Show a battery warning on low battery
 exec --no-startup-id ~/scripts/i3-battery-popup -L 35 -l 15 -t 5m -n -N -s ~/scripts/i3-battery-popup.wav 
