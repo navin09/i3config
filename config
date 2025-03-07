@@ -222,25 +222,40 @@ set $gray #a89984
 set $darkgray #1d2021
 set $lightgray #bdae93
 
+#bar {
+#	status_command exec ~/.local/bin/barista
+#	separator_symbol "⁞"
+#	font pango:DejaVu Sans Mono 10
+#	colors {
+#		background $bg
+#		statusline $lightgray
+#		separator  $yellow
+#		# colorclass       <border>    <background>    <text>
+#		focused_workspace  $lightgray  $lightgray      $bg
+#		inactive_workspace $darkgray   $darkgray       $lightgray
+#		
+#		#background #1F2D3A
+#		#statusline #1ABC9C
+#		#separator #1ABC9C
+#		## colorclass       <border> <background> <text>
+#		#focused_workspace  #1ABC9C  #1ABC9C     #1F2D3A
+#		#inactive_workspace #1F2D3A  #1F2D3A     #1ABC9C
+#	}
+#}
+
 bar {
-	status_command exec ~/.local/bin/barista
-	separator_symbol "⁞"
-	font pango:DejaVu Sans Mono 10
-	colors {
-		background $bg
-		statusline $lightgray
-		separator  $yellow
-		# colorclass       <border>    <background>    <text>
-		focused_workspace  $lightgray  $lightgray      $bg
-		inactive_workspace $darkgray   $darkgray       $lightgray
-		
-		#background #1F2D3A
-		#statusline #1ABC9C
-		#separator #1ABC9C
-		## colorclass       <border> <background> <text>
-		#focused_workspace  #1ABC9C  #1ABC9C     #1F2D3A
-		#inactive_workspace #1F2D3A  #1F2D3A     #1ABC9C
-	}
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    position bottom
+    status_command /home/navin/.cargo/bin/i3status-rs  /home/navin/.config/i3status-rust/config.toml
+    colors {
+        background $bg
+        separator $yellow
+        statusline $lightgray
+        focused_workspace $lightgray $lightgray $bg
+        active_workspace $purple $purple $red
+        inactive_workspace $darkgray $darkgray $lightgray
+        urgent_workspace  $yellow $yellow $darkgray
+    }
 }
 
 # Window decorations
@@ -294,6 +309,7 @@ set $volumestep 5
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
