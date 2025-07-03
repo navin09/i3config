@@ -172,6 +172,7 @@ bindsym $mod+r mode "resize"
 # exec_always feh --bg-fill $HOME/Pictures/Backgrounds/desktop-background.jpg 
 # Pick a random image from a folder as background
 exec_always feh --randomize --bg-fill ~/Pictures/Backgrounds/Selected/*
+# exec_always feh --bg-fill ~/Pictures/Backgrounds/Selected/girl-pearl-earring-ghibli-wallpaper.png
 exec --no-startup-id /home/navin/.local/bin/syncthing serve --no-browser --logfile=default
 
 ##########################
@@ -182,6 +183,12 @@ exec --no-startup-id /home/navin/.local/bin/syncthing serve --no-browser --logfi
 bindsym Mod1+Control+l exec i3lock-fancy -g -- scrot -z
 # bindsym $mod+Print exec gnome-screenshot -f ~/Pictures/screenshot-$(date +"%d-%m-%Y")
 bindsym --release Print exec scrot $HOME/Pictures/`date +%Y-%m-%d_%H:%M:%S`.png
+
+############################################################################
+# Toggle power management (for inhibiting screensaver during long playback)
+############################################################################
+bindsym $mod+F1 exec --no-startup-id "~/scripts/screensaver-control off"
+bindsym $mod+F4 exec --no-startup-id "~/scripts/screensaver-control on"
 
 # move floating windows with keys
 bindsym $mod+m mode "move" focus floating
