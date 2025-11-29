@@ -364,4 +364,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 # exec --no-startup-id activate-linux &
 
 # Compositing (picom)
-# exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
+exec_always --no-startup-id "/usr/local/bin/picom --config ~/.config/picom/picom.conf --log-level=info --log-file ~/.config/picom/picom.log"
+
+# Gnome Keyrings
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
